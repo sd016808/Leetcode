@@ -16,7 +16,7 @@ class Solution:
             else:
                 stack[i] = chr(tmp + 96)
                 k -= tmp
-        
+
         return "".join(stack)
 # @lc code=end
 
