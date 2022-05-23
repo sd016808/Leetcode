@@ -11,5 +11,6 @@ class Solution:
         if n <= 1: return n
         elif n == 2: return 1
         else: return self.tribonacci(n - 1) + self.tribonacci(n - 2) + self.tribonacci(n - 3)
+
 # @lc code=end
 
