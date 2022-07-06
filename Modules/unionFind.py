@@ -28,11 +28,10 @@ class UnionFind:
         # 小樹接大樹
         if self.size[x_root] < self.size[y_root]:
             self.parent[x_root] = y_root
-        elif self.size[x_root] > self.size[y_root]:
-            self.parent[x_root] = y_root
+            self.size[y_root] += self.size[x_root]
         else:
-            self.parent[x_root] = y_root
-            self.size[y_root] += 1
-        
+            self.parent[y_root] = x_root
+            self.size[x_root] += self.size[y_root]
+
         self.count -= 1
         return True
