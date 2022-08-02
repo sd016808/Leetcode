@@ -13,24 +13,17 @@
 
 class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
-        dummy1 = ListNode(0)
-        dummy2 = ListNode(0)
-        n = head
-        pointer1 = dummy1
-        pointer2 = dummy2
-        while n:
-            if n.val < x:
-                pointer1.next = n
-                pointer1 = n
+        dummy1, dummy2, = ListNode(), ListNode()
+        pointer1, pointer2 = dummy1, dummy2
+        while head:
+            if head.val < x:
+                pointer1.next, pointer1 = head, head
             else:
-                pointer2.next = n
-                pointer2 = n
+                pointer2.next, pointer2 = head, head
 
-            n = n.next
+            head = head.next
 
-
-        pointer1.next = dummy2.next
-        pointer2.next = None
+        pointer1.next, pointer2.next = dummy2.next, None
         return dummy1.next
     
 # @lc code=end

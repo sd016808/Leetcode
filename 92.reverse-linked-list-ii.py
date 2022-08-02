@@ -12,36 +12,36 @@
 #         self.next = next
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
-        dummy = ListNode(0, head)
-        n = dummy
-        leftTargetParent = None
-        cnt = 1
-
-        while cnt != left:
-            n = n.next
-            cnt += 1
+        if left == right:
+            return head
         
-        leftTargetParent = n
-        while cnt != right + 1:
-            n = n.next
-            cnt += 1
+        dummy = ListNode(0)
+        dummy.next = head
+        prev = dummy
+        count = 0
+        while count != left:
+            count += 1
+            prev = head
+            head = head.next
 
-        start = self.reverse(leftTargetParent.next, n)
-        leftTargetParent.next = start
 
         return dummy.next
 
-    def reverse(self, head, end):
-        pre = end.next
-        n = head
-        while n != end:
-            tmp = n.next
-            n.next = pre
-            pre = n
-            n = tmp
-        
-        end.next = pre
-        return end
+    def reverseLinkList(self, head, end):
+        dummy = ListNode(0)
+        dummy.next = head
+        prev = dummy
+        while head != end:
+            n = head.next
+            head.next = prev
+            prev = head
+            head = n
+
+        return end, head
+
+
+# Input: head = [1,2,3,4,5], left = 2, right = 4
+# Output: [1,4,3,2,5]
 
 # @lc code=end
 
